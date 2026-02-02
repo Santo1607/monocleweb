@@ -7,20 +7,17 @@ main {
     background: var(--color-bg);
 }
 
+/* Page Title Wrapper */
 .page-title {
-    text-align: center;
-    font-size: 2.5rem;
-    /* Smaller for mobile default */
-    color: var(--color-text);
-    margin: 30px 0;
+    /* Glitch text handles most of the font styling now */
     text-transform: uppercase;
-    letter-spacing: 4px;
-    animation: fadeInDown 1s ease;
+    letter-spacing: 10px;
+    margin: 0;
 }
 
 @media(min-width: 768px) {
     .page-title {
-        font-size: 3.5rem;
+        font-size: 5rem;
     }
 }
 
@@ -327,49 +324,93 @@ body {
     }
 }
 
-/* Combo & Registration Section */
-.registration-section {
-    background: #0f0f0f;
-    padding: 60px 5%;
-    border-top: 1px solid #222;
-}
-
-.combo-offers {
+/* --- COMBO BANNER (Top) --- */
+.combo-banner {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-left: 4px solid var(--neon-gold);
+    border-right: 4px solid var(--neon-blue);
+    padding: 30px;
+    margin: 0 auto 50px;
+    max-width: 900px;
     text-align: center;
-    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    animation: glowPulse 4s infinite alternate;
 }
 
-.combo-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 5px rgba(255, 215, 0, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 243, 255, 0.15);
+    }
 }
 
-.combo-chip {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 10px 20px;
-    border-radius: 50px;
-    color: #ccc;
+.combo-banner h3 {
+    color: var(--neon-gold);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    font-family: var(--font-heading);
+}
+
+.combo-banner p {
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.combo-banner small {
+    display: block;
+    margin-top: 15px;
+    color: #888;
+    font-style: italic;
     font-size: 0.9rem;
 }
 
-.combo-chip span {
-    color: var(--color-accent-gold);
-    font-weight: 700;
-    margin-left: 5px;
+.highlight-price {
+    font-weight: 800;
+    color: #000;
+    background: var(--neon-gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--neon-gold);
 }
 
-/* Form Styles */
+/* --- REGISTRATION FORM SECTION --- */
+.registration-section {
+    background: #0f0f0f;
+    padding: 80px 5%;
+    border-top: 1px solid #222;
+    position: relative;
+}
+
 .reg-form-container {
     max-width: 800px;
     margin: 0 auto;
-    background: #161616;
-    padding: 40px;
-    border-radius: 4px;
-    border: 1px solid #333;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.combo-offers {
+    /* Hiding the duplicate list inside form if not needed, or styling it minimally */
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .form-group {

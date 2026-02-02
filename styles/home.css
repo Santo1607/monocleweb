@@ -118,3 +118,154 @@
         font-size: 1rem;
     }
 }
+
+/* --- ABOUT SECTION STYLING --- */
+.section-container {
+    padding: 100px 5%;
+    position: relative;
+    background: #050505;
+}
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--neon-gold, #FFD700);
+    margin: 10px auto 0;
+    box-shadow: 0 0 10px var(--neon-gold, #FFD700);
+}
+
+.section-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.club-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.highlight-item {
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-gold, #FFD700);
+}
+
+.highlight-item h3 {
+    color: var(--neon-gold, #FFD700);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.highlight-item p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- OUR WORKS SECTION ("Phone" Aesthetic) --- */
+.works-section {
+    background: #0a0a0a;
+}
+
+.works-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.work-item {
+    position: relative;
+    width: 280px;
+    /* Phone width approx */
+    height: 500px;
+    /* Phone height approx (9:16ish) */
+    border-radius: 20px;
+    /* Rounded corners like a phone */
+    overflow: hidden;
+    /* The "Lighting Border" */
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(0, 243, 255, 0.5);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.work-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    border-color: #fff;
+    z-index: 10;
+}
+
+.work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.work-item:hover img {
+    transform: scale(1.1);
+}
+
+.work-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    color: #fff;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover .work-overlay {
+    transform: translateY(0);
+}
+
+.work-overlay span {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--neon-blue, #00F3FF);
+}
