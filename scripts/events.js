@@ -241,8 +241,9 @@ function initiatePayment(total) {
         return;
     }
 
-    // UPI URL Scheme
-    const upiLink = `upi://pay?pa=${upiId}&pn=${payeeName}&tn=${note}&am=${total}&cu=INR`;
+    // UPI URL Scheme - Simplified for better compatibility
+    // Removing pn (Payee Name) and tn (Note) as they often cause hanging on personal UPI IDs
+    const upiLink = `upi://pay?pa=${upiId}&am=${total}&cu=INR`;
 
     window.location.href = upiLink;
 }
