@@ -1,0 +1,120 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: url('../assets/images/hero_background.png') no-repeat center center/cover;
+}
+
+/* Overlay for better text readability and vignette */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.95) 85%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+/* Text Animations */
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+    animation: textPulse 4s ease-in-out infinite;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-accent-gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.9;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Animations Keyframes */
+@keyframes textPulse {
+
+    0%,
+    100% {
+        opacity: 0.9;
+        text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 40px rgba(197, 160, 89, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+/* CTA Button */
+.btn-primary {
+    display: inline-block;
+    padding: 15px 40px;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-bg);
+    background: var(--color-accent-gold);
+    border: 1px solid var(--color-accent-gold);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--color-accent-gold);
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+}
+
+.hero-note {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}

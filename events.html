@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - MONOCLE'26</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/events.css">
+</head>
+
+<body>
+    <nav class="navbar"></nav>
+
+    <main>
+        <h1 class="page-title">Events</h1>
+
+        <!-- Event Categories -->
+        <div class="category-divider">
+            <h2 class="glitch-text" data-text="PHOTOGRAPHY">PHOTOGRAPHY</h2>
+            <div class="film-strip"></div>
+        </div>
+
+        <section class="events-grid">
+            <!-- Photo Event 1 -->
+            <div class="event-card" data-category="photography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_1.png" alt="Meme Recreation">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">MEME RECREATION</h3>
+                    <p class="event-desc">Recreate iconic memes with your own twist and photography skills.</p>
+                    <div class="event-coordinators">
+                        <p>Sujitha Pradeep</p>
+                        <p>Vishal Chandrashekar</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'photo_meme', 50, 'photography')">SELECT</button>
+                </div>
+            </div>
+
+            <!-- Photo Event 2 -->
+            <div class="event-card" data-category="photography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_2.png" alt="Pause Rewind Relive">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">PAUSE. REWIND. RELIVE</h3>
+                    <p class="event-desc">Capture moments that tell a story of the past in the present.</p>
+                    <div class="event-coordinators">
+                        <p>Navya Shree</p>
+                        <p>Rishe Govind</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'photo_pause', 50, 'photography')">SELECT</button>
+                </div>
+            </div>
+
+            <!-- Photo Event 3 -->
+            <div class="event-card" data-category="photography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_3.png" alt="Dualation">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">DUALATION</h3>
+                    <p class="event-desc">Explore duality in a single frame. Contrast and harmony.</p>
+                    <div class="event-coordinators">
+                        <p>Mukunth</p>
+                        <p>Varun Sathvik</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'photo_dual', 50, 'photography')">SELECT</button>
+                </div>
+            </div>
+
+            <!-- Photo Event 4 -->
+            <div class="event-card" data-category="photography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_1.png" alt="Magazine Cover">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">MAGAZINE COVER</h3>
+                    <p class="event-desc">Design and shoot a professional magazine cover.</p>
+                    <div class="event-coordinators">
+                        <p>Keerthana</p>
+                        <p>Sahana</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'photo_mag', 50, 'photography')">SELECT</button>
+                </div>
+            </div>
+
+            <!-- Photo Event 5 -->
+            <div class="event-card" data-category="photography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_2.png" alt="Colour Hunt">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">COLOUR HUNT</h3>
+                    <p class="event-desc">A chromatic challenge to find and capture specific palettes.</p>
+                    <div class="event-coordinators">
+                        <p>Raavi Chandrashekar</p>
+                        <p>Afra Fathima</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'photo_color', 50, 'photography')">SELECT</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="category-divider">
+            <h2 class="glitch-text" data-text="VIDEOGRAPHY">VIDEOGRAPHY</h2>
+            <div class="film-strip"></div>
+        </div>
+
+        <section class="events-grid">
+            <!-- Video Event 1 -->
+            <div class="event-card" data-category="videography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_3.png" alt="Add-It">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">ADD-IT</h3>
+                    <p class="event-desc">Creative advertising and product showcase videography.</p>
+                    <div class="event-coordinators">
+                        <p>Saravana Jagadesh</p>
+                        <p>Manoj</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'video_add', 50, 'videography')">SELECT</button>
+                </div>
+            </div>
+
+            <!-- Video Event 2 -->
+            <div class="event-card" data-category="videography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_1.png" alt="Movie Trailer">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">MOVIE TRAILER</h3>
+                    <p class="event-desc">Cut, edit, and present a gripping trailer for a fictional film.</p>
+                    <div class="event-coordinators">
+                        <p>Deekshita</p>
+                        <p>Krishothaman</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'video_trailer', 50, 'videography')">SELECT</button>
+                </div>
+            </div>
+
+            <!-- Video Event 3 -->
+            <div class="event-card" data-category="videography" data-price="50">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_2.png" alt="Movie Scene Recreation">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹50</span>
+                    <h3 class="event-title">SCENE RECREATION</h3>
+                    <p class="event-desc">Recreate a famous movie scene with your own direction.</p>
+                    <div class="event-coordinators">
+                        <p>Shankari</p>
+                        <p>Radheshyam</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'video_scene', 50, 'videography')">SELECT</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="category-divider">
+            <h2 class="glitch-text" data-text="WORKSHOP">WORKSHOP</h2>
+            <div class="film-strip"></div>
+        </div>
+
+        <section class="events-grid">
+            <!-- Workshop -->
+            <div class="event-card featured-card" data-category="workshop" data-price="99">
+                <div class="event-poster">
+                    <img src="assets/images/work_sample_3.png" alt="Workshop">
+                    <div class="poster-overlay"></div>
+                </div>
+                <div class="event-details">
+                    <span class="event-price">₹99</span>
+                    <h3 class="event-title">SHORT-FILM EVENT</h3>
+                    <p class="event-desc">A comprehensive workshop on short-film making.</p>
+                    <div class="event-coordinators">
+                        <p>Navin</p>
+                        <p>Dev Dharshan</p>
+                    </div>
+                    <button class="btn-register"
+                        onclick="toggleSelection(this, 'workshop_main', 99, 'workshop')">SELECT</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Combo & Registration -->
+        <section id="register" class="registration-section">
+            <div class="reg-form-container">
+                <h2 style="color:var(--color-accent-gold); margin-bottom:20px; text-align:center;">Registration</h2>
+
+                <div class="combo-offers">
+                    <h4 style="color:#aaa; margin-bottom:10px;">COMBO SAVINGS APPLIED AUTOMATICALLY</h4>
+                    <p
+                        style="color:#777; font-size:0.9rem; margin-bottom:15px; max-width:600px; margin-left:auto; margin-right:auto;">
+                        Select your preferred events from the list above. Then, fill in your details below.
+                        Combo prices (like Photo+Video = ₹85) will be calculated for you automatically.
+                    </p>
+                    <div class="combo-grid">
+                        <div class="combo-chip">Photo + Video <span>₹85</span></div>
+                        <div class="combo-chip">Workshop + Photo <span>₹120</span></div>
+                        <div class="combo-chip">Workshop + Video <span>₹120</span></div>
+                        <div class="combo-chip">All 3 Categories <span>₹150</span></div>
+                    </div>
+                </div>
+
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email ID</label>
+                        <input type="email" class="form-control" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" required placeholder="9876543210">
+                    </div>
+                    <div class="form-group">
+                        <label>College Name (or 'NA')</label>
+                        <input type="text" class="form-control" required placeholder="SRM IST">
+                    </div>
+                    <div class="form-group">
+                        <label>Registration Number (if SRM)</label>
+                        <input type="text" class="form-control" placeholder="RA23...">
+                    </div>
+
+                    <div style="margin: 30px 0;">
+                        <label
+                            style="color:var(--color-accent-gold); font-weight:700; margin-bottom:15px; display:block;">SELECT
+                            EVENTS</label>
+                        <div class="selection-group">
+                            <div class="checkbox-card" onclick="toggleEvent('shortfilm')">
+                                <span>Shortfilm Podcast</span>
+                                <input type="checkbox" id="shortfilm" value="50">
+                            </div>
+                            <div class="checkbox-card" onclick="toggleEvent('photography')">
+                                <span>Photography</span>
+                                <input type="checkbox" id="photography" value="50">
+                            </div>
+                            <div class="checkbox-card" onclick="toggleEvent('videography')">
+                                <span>Videography</span>
+                                <input type="checkbox" id="videography" value="50">
+                            </div>
+                            <div class="checkbox-card" onclick="toggleEvent('workshop')">
+                                <span>Workshop</span>
+                                <input type="checkbox" id="workshop" value="99">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-summary">
+                        <div>
+                            <p style="color:#888; font-size:0.9rem;">Total Amount</p>
+                            <div class="total-amount" id="totalDisplay">₹0</div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden inputs for data handling if needed -->
+                    <input type="hidden" id="finalAmount" name="amount">
+                    <input type="hidden" id="selectedEventsInput" name="events">
+
+                    <button type="submit" class="btn-primary" id="payBtn"
+                        style="width:100%; border:none; margin-top:10px;">PAY NOW & REGISTER</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/events.js" defer></script>
+</body>
+
+</html>
