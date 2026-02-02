@@ -245,6 +245,9 @@ function initiatePayment(total) {
     // Removing pn (Payee Name) and tn (Note) as they often cause hanging on personal UPI IDs
     const upiLink = `upi://pay?pa=${upiId}&am=${total}&cu=INR`;
 
+    // DEBUG: Alert the exact link to see if parameters are clean
+    // alert("Debug Link: " + upiLink); 
+
     window.location.href = upiLink;
 }
 
