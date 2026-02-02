@@ -1,0 +1,9 @@
+# Ignore environment config
+scripts/env.js
+
+# Ignore system files
+Thumbs.db
+.DS_Store
+
+# Ignore node_modules if you ever use npm
+node_modules/

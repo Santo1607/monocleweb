@@ -216,13 +216,19 @@ document.getElementById('registrationForm').addEventListener('submit', (e) => {
 });
 
 function initiatePayment(total) {
-    // IMPORTANT: REPLACE THIS WITH YOUR ACTUAL MERCHANT/PERSONAL UPI ID
-    const upiId = 'REPLACE_THIS_WITH_YOUR_UPI_ID@upi';
+    // Get UPI ID from env.js (window.ENV)
+    // If env.js is missing or invalid, fall back to placeholder
+    let upiId = 'REPLACE_THIS_WITH_YOUR_UPI_ID@upi';
+
+    if (window.ENV && window.ENV.UPI_ID) {
+        upiId = window.ENV.UPI_ID;
+    }
+
     const payeeName = 'CamOGenics Festival';
     const note = 'Monocle Reg';
 
     if (upiId.includes('REPLACE')) {
-        alert('DEVELOPER NOTICE: Please open scripts/events.js and replace "REPLACE_THIS_WITH_YOUR_UPI_ID@upi" with your actual UPI ID (e.g., mobile@upi) for the payment to work.');
+        alert('SETUP REQUIRED: Please open "scripts/env.js" and enter your actual UPI ID to accept payments.');
         return;
     }
 
