@@ -123,23 +123,26 @@ function updateFormUI() {
 }
 
 function updateSelectionList() {
-    // Generate a summary text to put in a hidden input or show the user
-    // We will dynamically create the checkbox list in the form based on what's clicked above for clarity
+    // Clean list for mobile
     const container = document.querySelector('.selection-group');
-    container.innerHTML = ''; // Clear current
+    container.innerHTML = '';
 
     if (selectedEvents.size === 0) {
-        container.innerHTML = '<p style="color:#666; font-style:italic;">No events selected. Select events from the cards above to see the breakdown.</p>';
+        container.innerHTML = '<p style="color:#aaa; text-align:center;">No events selected above.</p>';
         return;
     }
 
-    // Just list them simply
+    container.innerHTML = '<p style="color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;">Selected:</p>';
+
+    // Simple vertical list
     selectedEvents.forEach(id => {
         const div = document.createElement('div');
-        div.className = 'checkbox-card selected';
-        div.style.padding = '10px';
-        div.style.marginBottom = '5px';
-        // Show original price
+        div.style.display = 'flex';
+        div.style.justifyContent = 'space-between';
+        div.style.padding = '8px 0';
+        div.style.color = '#ccc';
+        div.style.borderBottom = '1px solid #222';
+
         div.innerHTML = `<span>${formatId(id)}</span> <span>₹${eventPrices[id]}</span>`;
         container.appendChild(div);
     });
@@ -149,33 +152,82 @@ function formatId(id) {
     return id.replace(/_/g, ' ').toUpperCase();
 }
 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwThySeO7c8_jGN6rJPKjF1QmwKrRZvyAZynpNF71aI5Rv460v7Q-ZArXmN_XIi89Mw/exec';
+
 document.getElementById('registrationForm').addEventListener('submit', (e) => {
     e.preventDefault();
+
     if (selectedEvents.size === 0) {
         alert('Please select at least one event.');
         return;
     }
 
     const total = document.getElementById('totalDisplay').textContent.replace('₹', '');
+    const payBtn = document.getElementById('payBtn');
 
-    // MOBILE PAYMENT INTEGRATION
-    // Since this is a phone-based site, we can try to open a UPI intent.
-    // Replace 'your-upi-id@bank' with the actual UPI ID.
-    const upiId = 'camogenics@srm'; // Placeholder
-    const payeeName = 'CamOGenics';
-    const note = 'Monocle Registration';
+    // Disable button to prevent double submit
+    const originalBtnText = payBtn.textContent;
+    payBtn.textContent = 'SAVING DATA...';
+    payBtn.disabled = true;
+
+    // Collect Data
+    const formData = {
+        name: document.getElementById('regName').value,
+        email: document.getElementById('regEmail').value,
+        phone: document.getElementById('regPhone').value,
+        college: document.getElementById('regCollege').value,
+        regNo: document.getElementById('regRegNo').value,
+        events: Array.from(selectedEvents).join(', '),
+        amount: total,
+        paymentId: "Initiated_UPI"
+    };
+
+    // Send to Google Sheets
+    // mode: 'no-cors' is important for simple opaque requests if we don't need the response content immediately,
+    // but standard POST usually works. We'll use no-cors to be safe against CORS errors on simple hosting.
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+        .then(() => {
+            // Success (or at least sent)
+            payBtn.textContent = 'REDIRECTING TO PAYMENT...';
+
+            // PROCEED TO PAYMENT
+            initiatePayment(total);
+
+            // Reset button after delay (if they come back)
+            setTimeout(() => {
+                payBtn.textContent = originalBtnText;
+                payBtn.disabled = false;
+            }, 3000);
+        })
+        .catch(err => {
+            console.error('Error saving:', err);
+            alert('Warning: Could not save details to server. Proceeding to payment anyway.');
+            initiatePayment(total);
+            payBtn.textContent = originalBtnText;
+            payBtn.disabled = false;
+        });
+});
+
+function initiatePayment(total) {
+    // IMPORTANT: REPLACE THIS WITH YOUR ACTUAL MERCHANT/PERSONAL UPI ID
+    const upiId = 'REPLACE_THIS_WITH_YOUR_UPI_ID@upi';
+    const payeeName = 'CamOGenics Festival';
+    const note = 'Monocle Reg';
+
+    if (upiId.includes('REPLACE')) {
+        alert('DEVELOPER NOTICE: Please open scripts/events.js and replace "REPLACE_THIS_WITH_YOUR_UPI_ID@upi" with your actual UPI ID (e.g., mobile@upi) for the payment to work.');
+        return;
+    }
 
     // UPI URL Scheme
     const upiLink = `upi://pay?pa=${upiId}&pn=${payeeName}&tn=${note}&am=${total}&cu=INR`;
 
-    // Save data before redirecting (mock save)
-    console.log('Saving registration...');
-
-    // Redirect to Payment
-    // On mobile, this will open GPay/PhonePe/Paytm if installed.
-    // On desktop, it might do nothing or open a handling app.
-
-    if (confirm(`Redirecting to payment gateway for ₹${total}. Proceed?`)) {
-        window.location.href = upiLink;
-    }
-});
+    window.location.href = upiLink;
+}
