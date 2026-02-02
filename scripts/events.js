@@ -244,9 +244,10 @@ function initiatePayment(total) {
     // Ensure amount has 2 decimals (e.g. "50.00") - Critical for some banks
     const amount = parseFloat(total).toFixed(2);
 
-    // UPI URL Scheme - PREFILLED MODE (Decimal Fixed)
-    // Sending pa, pn, am, cu.
-    const upiLink = `upi://pay?pa=${upiId}&pn=Monocle&am=${amount}&cu=INR`;
+    // UPI URL Scheme - NAME MATCHING FIX
+    // "Limit Reached" error means "Name Mismatch" in GPay.
+    // We set pn=Vinith (matches ID) to satisfy the risk check.
+    const upiLink = `upi://pay?pa=${upiId}&pn=Vinith&am=${amount}&cu=INR`;
 
     window.location.href = upiLink;
 }
