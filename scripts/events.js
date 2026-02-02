@@ -220,15 +220,24 @@ function initiatePayment(total) {
     // If env.js is missing or invalid, fall back to placeholder
     let upiId = 'REPLACE_THIS_WITH_YOUR_UPI_ID@upi';
 
-    if (window.ENV && window.ENV.UPI_ID) {
-        upiId = window.ENV.UPI_ID;
+    // Robust check for global ENV variable (var ENV in env.js)
+    try {
+        if (typeof ENV !== 'undefined' && ENV.UPI_ID) {
+            upiId = ENV.UPI_ID;
+        } else if (window.ENV && window.ENV.UPI_ID) {
+            upiId = window.ENV.UPI_ID;
+        }
+    } catch (e) {
+        console.error("Error reading ENV:", e);
     }
 
     const payeeName = 'CamOGenics Festival';
     const note = 'Monocle Reg';
 
     if (upiId.includes('REPLACE')) {
-        alert('SETUP REQUIRED: Please open "scripts/env.js" and enter your actual UPI ID to accept payments.');
+        // Debugging info for user if it still fails
+        const typeInfo = typeof ENV === 'undefined' ? "undefined" : JSON.stringify(ENV);
+        alert(`SETUP ERROR: The website cannot read 'ENV.UPI_ID' from scripts/env.js.\n\nDebug Info: ENV is ${typeInfo}\n\nPlease check console (F12) for details.`);
         return;
     }
 
