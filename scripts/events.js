@@ -241,12 +241,12 @@ function initiatePayment(total) {
         return;
     }
 
-    // UPI URL Scheme - Simplified for better compatibility
-    // Removing pn (Payee Name) and tn (Note) as they often cause hanging on personal UPI IDs
-    const upiLink = `upi://pay?pa=${upiId}&am=${total}&cu=INR`;
+    // Ensure amount has 2 decimals (e.g. "50.00") - Critical for some banks
+    const amount = parseFloat(total).toFixed(2);
 
-    // DEBUG: Alert the exact link to see if parameters are clean
-    // alert("Debug Link: " + upiLink); 
+    // UPI URL Scheme - PREFILLED MODE (Decimal Fixed)
+    // Sending pa, pn, am, cu.
+    const upiLink = `upi://pay?pa=${upiId}&pn=Monocle&am=${amount}&cu=INR`;
 
     window.location.href = upiLink;
 }
