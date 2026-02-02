@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/events.css">
+    <link rel="stylesheet" href="styles/events_modal.css">
 </head>
 
 <body>
@@ -125,7 +126,10 @@
                     <div class="poster-overlay"></div>
                 </div>
                 <div class="event-details">
-                    <span class="event-price">₹50</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <span class="event-price">₹50</span>
+                        <button class="btn-desc-link" onclick="openModal('modal_color_hunt')">Check Description</button>
+                    </div>
                     <h3 class="event-title">COLOUR HUNT</h3>
                     <p class="event-desc">A chromatic challenge to find and capture specific palettes.</p>
                     <div class="event-coordinators">
@@ -137,6 +141,26 @@
                 </div>
             </div>
         </section>
+
+        <!-- Modals -->
+        <div id="modal_color_hunt" class="modal-overlay" onclick="closeModal('modal_color_hunt')">
+            <div class="modal-glass" onclick="event.stopPropagation()">
+                <button class="close-modal" onclick="closeModal('modal_color_hunt')">&times;</button>
+                <h2>COLOUR HUNT</h2>
+                <div class="modal-body">
+                    <h3>Description</h3>
+                    <p>The participant will be provided with the specific colour of our choice. Based on the given
+                        colours, the participants are requested to capture the pictures with that colour in it.</p>
+
+                    <h3>Rules</h3>
+                    <ul>
+                        <li>1. abc</li>
+                        <li>2. cdc</li>
+                        <li>3. dded</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <div class="category-divider">
             <h2 class="glitch-text" data-text="VIDEOGRAPHY">VIDEOGRAPHY</h2>
